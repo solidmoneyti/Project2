@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
 import './App.css';
 import Navbar from './component/Navbar/index';
+import ExpenseModal from './component/table/ExpenseModal';
 
 const App = () => {
   //FOR EXPENSES
@@ -10,12 +9,6 @@ const App = () => {
   const [expenseName, setExpenseName] = useState('');
   const [expenseAmount, setExpenseAmount] = useState('');
   const [expenseDate, setExpenseDate] = useState('');
- //FOR API DATA
-  // const [costOfLivingData, setCostOfLivingData] = useState(null);
-  // const [isLoading, setIsLoading] = useState(true);
-  // const [error, setError] = useState(null);
-
-  
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -81,51 +74,22 @@ const App = () => {
         </div>
       </div>
 
-{/*table for total expenditure and total income*/}
-      <table>
-  <caption class="caption-top">
-    Total income and total expenditure.
-  </caption>
-  <thead>
-    <tr>
-      <th>Total Income</th>
-      <th>Total Expenditure(s)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>10,000</td>
-      <td>2000</td>
-    </tr>
-    <tr>
-      <td>3000</td>
-      <td >35000</td>
-    </tr>
-    </tbody>
-</table>
-
-{/*table shadow*/}
-<div class="shadow-2xl ..."></div>
-
       {/* Expense Modal */}
-      {isModalOpen && (
-        <div className="fixed z-10 inset-0 overflow-y-auto flex justify-center items-center">
-          <div className="relative bg-white rounded-lg w-1/3">
-            <div className="p-8">
-              <h2 className="text-lg font-semibold mb-4">Add Expense</h2>
-              <input type="text" placeholder="Expense Name" className="border border-gray-300 rounded-lg mb-4 w-full px-4 py-2" value={expenseName} onChange={(e) => setExpenseName(e.target.value)} />
-              <input type="number" placeholder="Amount" className="border border-gray-300 rounded-lg mb-4 w-full px-4 py-2" value={expenseAmount} onChange={(e) => setExpenseAmount(e.target.value)} />
-              <input type="date" placeholder="Date" className="border border-gray-300 rounded-lg mb-4 w-full px-4 py-2" value={expenseDate} onChange={(e) => setExpenseDate(e.target.value)} />
-              <div className="flex justify-end">
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={handleAddExpense}>Add</button>
-                <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded ml-4" onClick={handleCloseModal}>Cancel</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+      <ExpenseModal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        onAddExpense={handleAddExpense}
+        expenseName={expenseName}
+        setExpenseName={setExpenseName}
+        expenseAmount={expenseAmount}
+        setExpenseAmount={setExpenseAmount}
+        expenseDate={expenseDate}
+        setExpenseDate={setExpenseDate}
+      />
     </div>
   );
 };
 
 export default App;
+
+
