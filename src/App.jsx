@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
+import Chart from 'chart.js/auto';
+import { CategoryScale } from "chart.js";
+import { Expense } from './utils/Data'
+import DoughnutChart from './component/chart/DoughnutChart';
+import { Colors } from 'chart.js';
 import './App.css';
+
+Chart.register(CategoryScale);
+Chart.register(Colors);
 
 const App = () => {
   //FOR EXPENSES
@@ -9,6 +15,18 @@ const App = () => {
   const [expenseName, setExpenseName] = useState('');
   const [expenseAmount, setExpenseAmount] = useState('');
   const [expenseDate, setExpenseDate] = useState('');
+
+  //FOR CHART
+  const [chartData, setChartData] = useState({
+    labels: Expense.map((data) => data.category),
+    datasets: [{
+      label: 'Cost',
+      data: Expense.map((data) => data.cost),
+      borderWidth: 2,
+      hoverBorderColor: 'rgb(0, 0, 0)',
+      hoverBorderWidth: 2,
+    }]
+  })
  //FOR API DATA
   // const [costOfLivingData, setCostOfLivingData] = useState(null);
   // const [isLoading, setIsLoading] = useState(true);
@@ -69,6 +87,7 @@ const App = () => {
             <div className="w-1/3 bg-white p-4 rounded shadow-lg">
               {/* Second column content */}
               Chart/Graph
+              <DoughnutChart chartData={ chartData } />
             </div>
             <div className="w-1/3 bg-white p-4 rounded shadow-lg">
               {/* Third column content */}
