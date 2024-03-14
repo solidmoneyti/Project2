@@ -41,12 +41,12 @@ const App = () => {
         {/* First Row with 0 columns */}
         <div className="flex justify-center items-center h-20">
           {/* Heading / Page title - Expense Tracker */}
-          Expense Tracker
+          <img src="src/assets/images/logo.png" alt="Expense Tracker Logo" className="image-logo"/>
         </div>
 
         {/* Second Row with 2 columns */}
-        <div className="flex justify-between py-8">
-          <div className="w-1/2 bg-white p-4 rounded shadow-lg flex justify-center items-center">
+        <div className= "row2 flex justify-between py-8">
+          <div className="w-1/2 bg-white p-4 rounded shadow-lg flex justify-center text-center ">
             {/* Button in the center of Column 1 */}
             <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={handleOpenModal}>
               + Expense
