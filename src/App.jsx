@@ -78,6 +78,32 @@ const App = () => {
         </div>
       </div>
 
+{/*table for total expenditure and total income*/}
+      <table>
+  <caption class="caption-top">
+    Total income and total expenditure.
+  </caption>
+  <thead>
+    <tr>
+      <th>Total Income</th>
+      <th>Total Expenditure(s)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>10,000</td>
+      <td>2000</td>
+    </tr>
+    <tr>
+      <td>3000</td>
+      <td >35000</td>
+    </tr>
+    </tbody>
+</table>
+
+{/*table shadow*/}
+<div class="shadow-2xl ..."></div>
+
       {/* Expense Modal */}
       {isModalOpen && (
         <div className="fixed z-10 inset-0 overflow-y-auto flex justify-center items-center">
