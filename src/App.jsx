@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
+import Example from './component/Navbar';
 
 const App = () => {
   //FOR EXPENSES
@@ -77,7 +78,7 @@ const App = () => {
           </div>
         </div>
       </div>
-
+<Example></Example>
       {/* Expense Modal */}
       {isModalOpen && (
         <div className="fixed z-10 inset-0 overflow-y-auto flex justify-center items-center">
