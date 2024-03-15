@@ -32,6 +32,12 @@ const App = () => {
     
     <div className="bg-gray-100 h-screen">
        <Navbar></Navbar>
+       <div className="container mx-auto">
+        {/* First Row with 0 columns */}
+        <div className="flex justify-center items-center h-20">
+          {/* Heading / Page title - Expense Tracker */}
+          <img src="./src/assets/images/pic.jpg" alt="Expense Tracker Logo" className="image-logo"/>
+        </div>
       <div className="container mx-auto">
         {/* First Row with 0 columns */}
         <div className="flex justify-center items-center h-20">
@@ -73,7 +79,27 @@ const App = () => {
           </div>
         </div>
       </div>
+      
 
+
+        {/* Third Row with 3 columns, background light grey */}
+        <div className="bg-gray-200 p-8">
+          <div className="flex justify-between">
+            <div className="w-1/3 bg-white p-4 rounded shadow-lg">
+              {/* First column content */}
+              Income/Expenditure output
+            </div>
+            <div className="w-1/3 bg-white p-4 rounded shadow-lg">
+              {/* Second column content */}
+              Chart/Graph
+            </div>
+            <div className="w-1/3 bg-white p-4 rounded shadow-lg">
+              {/* Third column content */}
+              API Fetch
+            </div>
+          </div>
+        </div>
+      </div>
       {/* Expense Modal */}
       <ExpenseModal
         isOpen={isModalOpen}
