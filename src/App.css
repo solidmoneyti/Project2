@@ -5,6 +5,15 @@
   text-align: center;
 }
 
+
+.expenseTable {
+  height: 300px;
+}
+
+.resultsInfo{
+  height: 250;
+}
+
 .image-logo {
   width: 400px;
   height: auto;

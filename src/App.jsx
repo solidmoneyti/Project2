@@ -40,7 +40,7 @@ const App = () => {
         </div>
 
         {/* Second Row with 2 columns */}
-        <div className= "row2 flex justify-between py-8">
+        <div className= "row2 flex justify-between py-2">
           <div className="w-1/2 bg-white p-4 rounded shadow-lg flex justify-center text-center ">
             {/* Button in the center of Column 1 */}
             <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={handleOpenModal}>
@@ -55,8 +55,20 @@ const App = () => {
           </div>
         </div>
 
-        {/* Third Row with 3 columns, background light grey */}
-        <div className="bg-gray-200 p-8">
+        {/* third Row with 2 columns */}
+        <div className= "expenseTable flex justify-between py-2">
+          <div className="w-1/2 bg-white p-4 rounded shadow-lg flex justify-center text-center ">
+            {/* Button in the center of Column 1 */}
+    
+          </div>
+          <div className="bg-gradient-to-r from-sky-500 to-indigo-50..0 w-1/2 bg-white p-4 rounded shadow-lg flex justify-center items-center">
+            {/* Button in the center of Column 2 */}
+         
+          </div>
+        </div>
+
+        {/* Forth Row with 3 columns, background light grey */}
+        <div className=" bg-gray-200 p-2">
           <div className="flex justify-between">
             <div className="w-1/3 bg-white p-4 rounded shadow-lg">
               {/* First column content */}
