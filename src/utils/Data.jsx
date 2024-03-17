@@ -1,27 +1,27 @@
 export const Expense = [
     {
-      id: 1,
       category: 'Rent',
-      cost: 1500,
+      amount: 1500,
+      date: '',
     },
     {
-      id: 2,
       category: 'Food',
-      cost: 500,
+      amount: 500,
+      date: '',
     },
     {
-      id: 3,
       category: 'Leisure',
-      cost: 100,
+      amount: 100,
+      date: '',
     },
     {
-      id: 4,
       category: 'Taxes',
-      cost: 250,
+      amount: 250,
+      date: '',
     },
     {
-      id: 5,
       category: 'Utilities',
-      cost: 190,
+      amount: 190,
+      date: '',
     },
   ]

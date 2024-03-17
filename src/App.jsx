@@ -1,36 +1,41 @@
 import React, { useState } from 'react';
-import Chart from 'chart.js/auto';
-import { CategoryScale } from "chart.js";
-import { Expense } from './utils/Data'
-import DoughnutChart from './component/chart/DoughnutChart';
-import { Colors } from 'chart.js';
 import './App.css';
 import Navbar from './component/Navbar/index';
 import ExpenseModal from './component/table/ExpenseModal';
 import SecondRow from './component/rows/SecondRow';
 import ThirdRow from './component/rows/ThirdRow';
 import DataRow from './component/rows/dataRow';
-
-Chart.register(CategoryScale);
-Chart.register(Colors);
+import { Expense } from './utils/Data';
 
 const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [expenseName, setExpenseName] = useState('');
   const [expenseAmount, setExpenseAmount] = useState('');
   const [expenseDate, setExpenseDate] = useState('');
+  const [tableData, setTableData] = useState([]);
 
-  //FOR CHART
+  //For CHART
   const [chartData, setChartData] = useState({
     labels: Expense.map((data) => data.category),
     datasets: [{
       label: 'Cost',
-      data: Expense.map((data) => data.cost),
+      data: Expense.map((data) => data.amount),
       borderWidth: 2,
       hoverBorderColor: 'rgb(0, 0, 0)',
       hoverBorderWidth: 2,
     }]
   })
+
+  const handleChartChanges = () => {
+      setChartData((chartData) => ({
+        labels: Expense.map((data) => data.category),
+        datasets: [{
+          ...chartData.datasets,
+          data: Expense.map((data) => data.amount),
+        }]
+      })
+    )
+  }
  //FOR API DATA
   // const [costOfLivingData, setCostOfLivingData] = useState(null);
   // const [isLoading, setIsLoading] = useState(true);
@@ -50,13 +55,17 @@ const App = () => {
     console.log("Adding expense:", expenseName, expenseAmount, expenseDate);
     // Add the new expense to table data
     const newExpense = {
-      name: expenseName,
-      amount: expenseAmount,
+      category: expenseName,
+      amount: Number(expenseAmount),
       date: expenseDate
     };
     console.log("New expense:", newExpense);
     setTableData([...tableData, newExpense]);
-  
+
+    // Updates charts with new data
+    Expense.push(newExpense)
+    handleChartChanges();
+    
     // Clear input fields
     setExpenseName('');
     setExpenseAmount('');
@@ -85,7 +94,7 @@ const App = () => {
 
   
         {/* Third Row */}
-        <ThirdRow />
+        <ThirdRow chartData={chartData}/>
   
         {/* Expense Modal */}
         <ExpenseModal
