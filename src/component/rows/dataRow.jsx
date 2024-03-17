@@ -15,7 +15,7 @@ const DataRow = ({ tableData }) => {
         <tbody>
           {tableData.map((expense, index) => (
             <tr key={index}>
-              <td>{expense.name}</td>
+              <td>{expense.category}</td>
               <td>{expense.amount}</td>
               <td>{expense.date}</td>
             </tr>
