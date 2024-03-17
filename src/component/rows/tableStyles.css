@@ -1,0 +1,50 @@
+/* Apply styles to the entire table */
+table {
+    width: 100%; /* Make the table span the page width */
+    border-collapse: separate; /* Separate border for table cells */
+    border-spacing: 10px; /* Add space between table cells */
+  }
+  
+  /* Style table header */
+  th {
+    background-color: #4CAF50; /* Green background color */
+    color: white; /* White text color */
+    padding: 10px; /* Add padding to table header cells */
+  }
+  
+  /* Style table body */
+  td {
+    background-color: #f2f2f2; /* Light gray background color */
+    padding: 10px; /* Add padding to table cells */
+  }
+  
+  /* Style alternate rows */
+  tr:nth-child(even) {
+    background-color: #f9f9f9; /* Light gray background color for even rows */
+  }
+  
+  /* Hover effect on table rows */
+  tr:hover {
+    background-color: #ddd; /* Darker gray background color on hover */
+  }
+  
+  /* Add border to table */
+  table, th, td {
+    border: 1px solid black; /* Add border to table, header, and cells */
+  }
+  
+  /* Additional styles for a colorful and fun table */
+  th, td {
+    border-radius: 10px; /* Rounded corners for cells */
+  }
+  
+  /* Colorful background for table header and body */
+  th {
+    background-color: #3f51b5; /* Indigo background color for header */
+  }
+  
+  td {
+    background-color: #ff9800; /* Orange background color for body cells */
+    color: white; /* White text color for body cells */
+  }
+  
