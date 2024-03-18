@@ -1,7 +1,7 @@
 
-
-function () => {
-    <div<table>
+const table () => {
+ <div> 
+ <table>
   <caption class="caption-top">
     Table 3.1: Professional wrestlers and their signature moves.
   </caption>
