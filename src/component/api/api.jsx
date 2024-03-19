@@ -1,6 +1,6 @@
-const axios = require('axios');
+import axios from 'axios';
 
-const getCostofLiving = async () => {
+export async function getCostofLiving () {
   const options = {
     method: 'GET',
     url: 'https://cities-cost-of-living-and-average-prices-api.p.rapidapi.com/cost_of_living',
@@ -23,4 +23,5 @@ const getCostofLiving = async () => {
   }
 };
 
-module.exports = { getCostofLiving };
+
+

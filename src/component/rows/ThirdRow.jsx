@@ -1,5 +1,6 @@
 import React from 'react';
 import DoughnutChart from '../chart/DoughnutChart';
+import Card from '../Fetch/Card';
 // import { c } from 'vite/dist/node/types.d-FdqQ54oU';
 
 const ThirdRow = ( { chartData} ) => {
@@ -19,6 +20,7 @@ const ThirdRow = ( { chartData} ) => {
         <div className="w-1/3 bg-white p-4 rounded shadow-lg text-black">
           {/* Third column content */}
           API Fetch
+          <Card/>
         </div>
       </div>
     </div>

@@ -3,9 +3,9 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './component/Navbar/navbar';
 import Calculator from './pages/calculator';
 import './App.css';
-import Card from './Card';
-import Form from './Form';
-import Location from './Location';
+// import Card from './Card';
+// import Form from './Form';
+// import Location from './Location';
 
 const App = () => {
   return (
