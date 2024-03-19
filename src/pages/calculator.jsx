@@ -7,9 +7,9 @@ import { Expense } from '../utils/Expenses';
 
 const Calculator = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [expenseName, setExpenseName] = useState('');
-    const [expenseAmount, setExpenseAmount] = useState('');
-    const [expenseDate, setExpenseDate] = useState('');
+    const [transactionName, setTransactionName] = useState('');
+    const [transactionAmount, setTransactionAmount] = useState('');
+    const [transactionDate, setTransactionDate] = useState('');
     const [tableData, setTableData] = useState([]);
 
     //For CHART
@@ -34,10 +34,6 @@ const Calculator = () => {
         })
         )
     }
-    //FOR API DATA
-    // const [costOfLivingData, setCostOfLivingData] = useState(null);
-    // const [isLoading, setIsLoading] = useState(true);
-    // const [error, setError] = useState(null);
 
     
 
@@ -49,26 +45,20 @@ const Calculator = () => {
         setIsModalOpen(false);
     };
 
-    const handleAddExpense = () => {
-        console.log("Adding expense:", expenseName, expenseAmount, expenseDate);
-        // Add the new expense to table data
-        const newExpense = {
-        category: expenseName,
-        amount: Number(expenseAmount),
-        date: expenseDate
-        };
-        console.log("New expense:", newExpense);
-        setTableData([...tableData, newExpense]);
+
+    const handleAddTransaction = (newTransaction) => {
+        console.log("Adding transaction:", newTransaction);
+        setTableData([...tableData, newTransaction]);
 
         // Updates charts with new data
-        Expense.push(newExpense)
+        Expense.push(newTransaction);
         handleChartChanges();
-        
+
         // Clear input fields
-        setExpenseName('');
-        setExpenseAmount('');
-        setExpenseDate('');
-        console.log("Table data after adding:", tableData);
+        setTransactionName('');
+        setTransactionAmount('');
+        setTransactionDate('');
+
         // Close the modal
         handleCloseModal();
     };
@@ -95,15 +85,15 @@ const Calculator = () => {
     
             {/* Expense Modal */}
             <ExpenseModal
-            isOpen={isModalOpen}
-            onClose={handleCloseModal}
-            onAddExpense={handleAddExpense}
-            expenseName={expenseName}
-            setExpenseName={setExpenseName}
-            expenseAmount={expenseAmount}
-            setExpenseAmount={setExpenseAmount}
-            expenseDate={expenseDate}
-            setExpenseDate={setExpenseDate}
+                    isOpen={isModalOpen}
+                    onClose={handleCloseModal}
+                    onAddTransaction={handleAddTransaction}
+                    transactionName={transactionName}
+                    setTransactionName={setTransactionName}
+                    transactionAmount={transactionAmount}
+                    setTransactionAmount={setTransactionAmount}
+                    transactionDate={transactionDate}
+                    setTransactionDate={setTransactionDate}
             />
         </div>
         </div>
