@@ -14,7 +14,6 @@ const Calculator = () => {
 
     //For CHART
 
-
     const [chartData, setChartData] = useState({
         labels: Expense.map((data) => data.category),
         datasets: [{
@@ -47,7 +46,6 @@ const Calculator = () => {
 
 
     const handleAddTransaction = (newTransaction) => {
-        console.log("Adding transaction:", newTransaction);
         setTableData([...tableData, newTransaction]);
 
         // Updates charts with new data
@@ -67,7 +65,7 @@ const Calculator = () => {
     
 
     return (
-        <div className="bg-gray-100 h-screen">
+        <div className="bg-gray-100 h-max">
         <div className="container mx-auto">
             {/* First Row with 0 columns */}
             <div className="flex justify-center items-center max-h-60">

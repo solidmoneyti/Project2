@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './component/Navbar/navbar';
 import Calculator from './pages/calculator';
 import './App.css';
-import './component/Folder/Footer';
+import Footer from './component/Footer/Footer';
 
 const App = () => {
   return (
@@ -14,6 +14,7 @@ const App = () => {
         {/* <Route path="calendar" element={<Calendar />} />
         <Route path="about" element={<About />} /> */}
       </Routes>
+      {/* <Footer /> */}
     </Router>
   )
 };

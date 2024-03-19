@@ -1,9 +1,9 @@
-/* #root {
-  max-width: 1650px;
-  margin: 0 auto;
-  padding: 2rem;
+#root {
+  max-width: 100wh;
+  max-height: 100vh;
+  /* margin: auto; */
   text-align: center;
-} */
+}
 
 /* .image-logo {
   width: 400px;

@@ -2,9 +2,10 @@ import React from 'react';
 import '../rows/tableStyles.css' // Import the CSS file containing table styles
 
 const DataRow = ({ tableData }) => {
+  console.log(tableData.type)
   return (
     <div className="flex justify-center py-8">
-      <div className="w-full bg-white p-4 rounded shadow-lg flex justify-evenly text-center">
+      <div className="w-full bg-sky-950 p-4 rounded shadow-lg flex justify-evenly text-center">
         <table className='bg-white p-4 rounded shadow-lg border-0'>
           <thead className='bg-white p-4 rounded'>
             <tr>
@@ -15,10 +16,10 @@ const DataRow = ({ tableData }) => {
           </thead>
           <tbody>
             {tableData.map((transaction, index) => (
-              <tr key={index}>
-                <td>{transaction.name}</td>
-                <td>{transaction.amount}</td>
-                <td>{transaction.date}</td>
+              <tr key={index} className='border-0'>
+                <td className='border-0 text-black font-bold' style={{backgroundColor: transaction.type === 'expense' ? 'rgb(244, 151, 142)' : 'rgb(149, 213, 178)'}}>{transaction.name}</td>
+                <td className='border-0 text-black font-bold' style={{backgroundColor: transaction.type === 'expense' ? 'rgb(244, 151, 142)' : 'rgb(149, 213, 178)'}}>{transaction.amount}</td>
+                <td className='border-0 text-black font-bold' style={{backgroundColor: transaction.type === 'expense' ? 'rgb(244, 151, 142)' : 'rgb(149, 213, 178)'}}>{transaction.date}</td>
               </tr>
             ))}
           </tbody>

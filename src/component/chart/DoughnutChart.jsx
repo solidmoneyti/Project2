@@ -14,6 +14,7 @@ Chart.register(ChartDataLabels)
 const DoughnutChart = ({ chartData }) => {
 
   const options = {
+    maintainAspectRatio: true,
     tooltips: {
         enabled: false
     },
