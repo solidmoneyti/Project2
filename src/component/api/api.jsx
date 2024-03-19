@@ -5,8 +5,8 @@ export async function getCostofLiving () {
     method: 'GET',
     url: 'https://cities-cost-of-living-and-average-prices-api.p.rapidapi.com/cost_of_living',
     params: {
-      country: 'united-kingdom',
-      city: 'brighton'
+      country: country,
+      city: city,
     },
     headers: {
       'X-RapidAPI-Key': 'd5c2cec884mshe479a0bb5604893p149fd3jsne33416b10ce7',
