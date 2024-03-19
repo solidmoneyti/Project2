@@ -13,11 +13,11 @@ const DataRow = ({ tableData }) => {
           </tr>
         </thead>
         <tbody>
-          {tableData.map((expense, index) => (
+          {tableData.map((transaction, index) => (
             <tr key={index}>
-              <td>{expense.category}</td>
-              <td>{expense.amount}</td>
-              <td>{expense.date}</td>
+              <td>{transaction.name}</td>
+              <td>{transaction.amount}</td>
+              <td>{transaction.date}</td>
             </tr>
           ))}
         </tbody>
