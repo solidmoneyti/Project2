@@ -26,7 +26,7 @@ const Calculator = () => {
 
     const handleChartChanges = () => {
         setChartData((chartData) => ({
-            labels: Expense.map((data) => data.category),
+            labels: Expense.map((data) => data.name),
             datasets: [{
             ...chartData.datasets,
             data: Expense.map((data) => data.amount),
@@ -51,8 +51,10 @@ const Calculator = () => {
         setTableData([...tableData, newTransaction]);
 
         // Updates charts with new data
-        Expense.push(newTransaction);
-        handleChartChanges();
+        if(newTransaction.type === 'expense') {
+            Expense.push(newTransaction);
+            handleChartChanges();   
+        }
 
         // Clear input fields
         setTransactionName('');
@@ -68,9 +70,9 @@ const Calculator = () => {
         <div className="bg-gray-100 h-screen">
         <div className="container mx-auto">
             {/* First Row with 0 columns */}
-            <div className="flex justify-center items-center h-20">
+            <div className="flex justify-center items-center max-h-60">
             {/* Heading / Page title - Expense Tracker */}
-            <img src="src/assets/images/logo.png" alt="Expense Tracker Logo" className="image-logo"/>
+            <img src="src/assets/images/logo.png" alt="Expense Tracker Logo" className="max-h-svh"/>
             </div>
     
             {/* Second Row */}

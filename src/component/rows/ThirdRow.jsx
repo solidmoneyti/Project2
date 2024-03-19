@@ -5,20 +5,22 @@ import DoughnutChart from '../chart/DoughnutChart';
 const ThirdRow = ( { chartData} ) => {
 
   return (
-    <div className="bg-gray-200 p-8">
-      <div className="flex justify-between">
-        <div className="w-1/3 bg-white p-4 rounded shadow-lg text-black">
-          {/* First column content */}
-          Income/Expenditure output
-        </div>
-        <div className="w-1/3 bg-white p-4 rounded shadow-lg text-black">
-          {/* Second column content */}
-          Chart/Graph
-          <DoughnutChart chartData={chartData}/>
-        </div>
-        <div className="w-1/3 bg-white p-4 rounded shadow-lg text-black">
-          {/* Third column content */}
-          API Fetch
+    <div className=" flex justify-center">
+      <div className="w-full bg-gray-200 p-8">
+        <div className="flex justify-between">
+          <div className="w-1/3 bg-white p-4 rounded shadow-lg text-black">
+            {/* First column content */}
+            Income/Expenditure output
+          </div>
+          <div className="w-1/3 bg-white p-4 rounded shadow-lg text-black">
+            {/* Second column content */}
+            Chart/Graph
+            <DoughnutChart chartData={chartData}/>
+          </div>
+          <div className="w-1/3 bg-white p-4 rounded shadow-lg text-black">
+            {/* Third column content */}
+            API Fetch
+          </div>
         </div>
       </div>
     </div>

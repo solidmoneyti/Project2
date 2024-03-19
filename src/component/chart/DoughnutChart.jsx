@@ -38,8 +38,8 @@ const DoughnutChart = ({ chartData }) => {
   };
 
     return (
-      <div className="chart-container">
-        <Doughnut
+      <div className="chart-container flex justify-center">
+        <Doughnut className='justify-center flex'
           data={ chartData }
           options= { options }
         />

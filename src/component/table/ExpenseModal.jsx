@@ -17,6 +17,9 @@ const ExpenseModal = ({ isOpen, onClose, onAddTransaction }) => {
       date: transactionDate
     };
     onAddTransaction(newTransaction);
+    setTransactionName(() => '')
+    setTransactionAmount(() => '')
+    setTransactionDate(() => '')
     onClose();
   };
 
