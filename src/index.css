@@ -28,4 +28,24 @@
   button {
     background-color: #f9f9f9;
   }
-} */
+}
+
+.footer
+{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    border-color: rgb(33,37,41);
+    background: rgb(33,37,41);
+    color: #fff;
+}
+
+
+@media (min-width: 992px)
+{
+
+    .navbar-expand-lg .navbar-nav .nav-link
+    {
+        padding-left: 30px;
+    }
+}
