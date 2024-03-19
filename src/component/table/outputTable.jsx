@@ -1,7 +1,7 @@
 
-const table () => {
+const Table () => {
  <div> 
- <table>
+ <table
   <caption class="caption-top">
     Table 3.1: Professional wrestlers and their signature moves.
   </caption>
