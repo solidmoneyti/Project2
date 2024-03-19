@@ -1,15 +1,23 @@
 import React, { useState } from 'react';
 
-const ExpenseModal = ({ isOpen, onClose, onAddExpense, expenseName, setExpenseName, expenseAmount, setExpenseAmount, expenseDate, setExpenseDate }) => {
+const ExpenseModal = ({ isOpen, onClose, onAddTransaction }) => {
   const [transactionType, setTransactionType] = useState('expense');
+  const [transactionName, setTransactionName] = useState('');
+  const [transactionAmount, setTransactionAmount] = useState('');
+  const [transactionDate, setTransactionDate] = useState('');
 
   const handleTransactionTypeChange = (e) => {
     setTransactionType(e.target.value);
   };
-
   const handleAddButtonClick = () => {
-    onAddExpense(); // Call onAddExpense function from props
-    onClose(); // Close the modal after adding the expense
+    const newTransaction = {
+      type: transactionType,
+      name: transactionName,
+      amount: parseFloat(transactionAmount),
+      date: transactionDate
+    };
+    onAddTransaction(newTransaction);
+    onClose();
   };
 
   return (
@@ -25,10 +33,10 @@ const ExpenseModal = ({ isOpen, onClose, onAddExpense, expenseName, setExpenseNa
             >
               <option value="expense">Expense</option>
               <option value="income">Income</option>
-            </select>
-            <input type="text" placeholder="Transaction Name" className="border border-gray-300 rounded-lg mb-4 w-full px-4 py-2" value={expenseName} onChange={(e) => setExpenseName(e.target.value)} />
-            <input type="number" placeholder="Amount" className="border border-gray-300 rounded-lg mb-4 w-full px-4 py-2" value={expenseAmount} onChange={(e) => setExpenseAmount(e.target.value)} />
-            <input type="date" placeholder="Date" className="border border-gray-300 rounded-lg mb-4 w-full px-4 py-2" value={expenseDate} onChange={(e) => setExpenseDate(e.target.value)} />
+              </select>
+            <input type="text" placeholder="Transaction Name" className="border border-gray-300 rounded-lg mb-4 w-full px-4 py-2" value={transactionName} onChange={(e) => setTransactionName(e.target.value)} />
+            <input type="number" placeholder="Amount" className="border border-gray-300 rounded-lg mb-4 w-full px-4 py-2" value={transactionAmount} onChange={(e) => setTransactionAmount(e.target.value)} />
+            <input type="date" placeholder="Date" className="border border-gray-300 rounded-lg mb-4 w-full px-4 py-2" value={transactionDate} onChange={(e) => setTransactionDate(e.target.value)} />
             <div className="flex justify-end">
               <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={handleAddButtonClick}>Add</button>
               <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded ml-4" onClick={onClose}>Cancel</button>
