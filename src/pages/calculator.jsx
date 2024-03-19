@@ -3,7 +3,7 @@ import ExpenseModal from '../component/table/ExpenseModal';
 import SecondRow from '../component/rows/SecondRow';
 import ThirdRow from '../component/rows/ThirdRow';
 import DataRow from '../component/rows/dataRow';
-import { Expense } from '../utils/Data';
+import { Expense } from '../utils/Expenses';
 
 const Calculator = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -13,14 +13,14 @@ const Calculator = () => {
     const [tableData, setTableData] = useState([]);
 
     //For CHART
+
+
     const [chartData, setChartData] = useState({
         labels: Expense.map((data) => data.category),
         datasets: [{
-        label: 'Cost',
         data: Expense.map((data) => data.amount),
-        borderWidth: 2,
-        hoverBorderColor: 'rgb(0, 0, 0)',
-        hoverBorderWidth: 2,
+        cutout: '70%',
+        borderRadius: 30,
         }]
     })
 

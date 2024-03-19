@@ -17,7 +17,7 @@ const ExpenseModal = ({ isOpen, onClose, onAddExpense, expenseName, setExpenseNa
       <div className="fixed z-10 inset-0 overflow-y-auto flex justify-center items-center">
         <div className="relative bg-white rounded-lg w-1/3">
           <div className="p-8">
-            <h2 className="text-lg font-semibold mb-4">Add {transactionType === 'expense' ? 'Expense' : 'Income'}</h2>
+            <h2 className="text-lg font-semibold mb-4 text-black">Add {transactionType === 'expense' ? 'Expense' : 'Income'}</h2>
             <select
               value={transactionType}
               onChange={handleTransactionTypeChange}
