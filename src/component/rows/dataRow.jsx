@@ -2,7 +2,6 @@ import React from 'react';
 import '../rows/tableStyles.css' // Import the CSS file containing table styles
 
 const DataRow = ({ tableData }) => {
-  console.log(tableData.type)
   return (
     <div className="flex justify-center py-8">
       <div className="w-full bg-sky-950 p-4 rounded shadow-lg flex justify-evenly text-center">

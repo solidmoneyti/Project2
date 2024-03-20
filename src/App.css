@@ -5,10 +5,14 @@
   text-align: center;
 }
 
-/* .image-logo {
-  width: 400px;
-  height: auto;
-} */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+}
 
 .logo {
   height: 6em;
@@ -45,3 +49,4 @@
 .read-the-docs {
   color: #888;
 }
+
