@@ -32,8 +32,8 @@
 
 .footer
 {
-    position: absolute;
-    bottom: 0;
+    /* position: absolute;
+    bottom: 0; */
     width: 100%;
     border-color: rgb(33,37,41);
     background: rgb(33,37,41);
