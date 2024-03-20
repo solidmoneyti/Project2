@@ -3,7 +3,7 @@ import ExpenseModal from '../component/table/ExpenseModal';
 import SecondRow from '../component/rows/SecondRow';
 import ThirdRow from '../component/rows/ThirdRow';
 import DataRow from '../component/rows/dataRow';
-import { Expense } from '../utils/Data';
+import { Expense } from '../utils/Expenses';
 
 const Calculator = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -13,20 +13,20 @@ const Calculator = () => {
     const [tableData, setTableData] = useState([]);
 
     //For CHART
+
     const [chartData, setChartData] = useState({
         labels: Expense.map((data) => data.category),
         datasets: [{
-        label: 'Cost',
         data: Expense.map((data) => data.amount),
-        borderWidth: 2,
-        hoverBorderColor: 'rgb(0, 0, 0)',
-        hoverBorderWidth: 2,
+        backgroundColor: 'rgb(244, 151, 142)',
+        cutout: '70%',
+        borderRadius: 30,
         }]
     })
 
     const handleChartChanges = () => {
         setChartData((chartData) => ({
-            labels: Expense.map((data) => data.category),
+            labels: Expense.map((data) => data.name),
             datasets: [{
             ...chartData.datasets,
             data: Expense.map((data) => data.amount),
@@ -47,12 +47,22 @@ const Calculator = () => {
 
 
     const handleAddTransaction = (newTransaction) => {
+ LocationForm
         console.log("Adding transaction:", newTransaction);
         setTableData([...tableData, newTransaction]);
 
         // Updates charts with new data
         Expense.push(newTransaction);
         handleChartChanges();
+
+        setTableData([...tableData, newTransaction]);
+
+        // Updates charts with new data
+        if(newTransaction.type === 'expense') {
+            Expense.push(newTransaction);
+            handleChartChanges();   
+        }
+ main
 
         // Clear input fields
         setTransactionName('');
@@ -65,12 +75,12 @@ const Calculator = () => {
     
 
     return (
-        <div className="bg-gray-100 h-screen">
+        <div className="bg-gray-100 h-max">
         <div className="container mx-auto">
             {/* First Row with 0 columns */}
-            <div className="flex justify-center items-center h-20">
+            <div className="flex justify-center items-center max-h-60 pl-9">
             {/* Heading / Page title - Expense Tracker */}
-            <img src="src/assets/images/logo.png" alt="Expense Tracker Logo" className="image-logo"/>
+            <img src="src/assets/images/logo.png" alt="Expense Tracker Logo" className="max-h-svh"/>
             </div>
     
             {/* Second Row */}
