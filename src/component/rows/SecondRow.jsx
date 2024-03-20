@@ -10,7 +10,7 @@ const SecondRow = ({ handleOpenModal }) => {
           </button>
           {/* Button in the center of Column 2 */}
           <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-            Export
+            Cost of living search
           </button>
               </div>
         </div>
