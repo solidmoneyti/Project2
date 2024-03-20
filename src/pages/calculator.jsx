@@ -47,6 +47,14 @@ const Calculator = () => {
 
 
     const handleAddTransaction = (newTransaction) => {
+ LocationForm
+        console.log("Adding transaction:", newTransaction);
+        setTableData([...tableData, newTransaction]);
+
+        // Updates charts with new data
+        Expense.push(newTransaction);
+        handleChartChanges();
+
         setTableData([...tableData, newTransaction]);
 
         // Updates charts with new data
@@ -54,6 +62,7 @@ const Calculator = () => {
             Expense.push(newTransaction);
             handleChartChanges();   
         }
+ main
 
         // Clear input fields
         setTransactionName('');

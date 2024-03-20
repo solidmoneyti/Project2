@@ -1,12 +1,12 @@
-const axios = require('axios');
+import axios from 'axios';
 
-const getCostofLiving = async () => {
+export async function getCostofLiving (country, city) {
   const options = {
     method: 'GET',
     url: 'https://cities-cost-of-living-and-average-prices-api.p.rapidapi.com/cost_of_living',
     params: {
-      country: 'united-kingdom',
-      city: 'brighton'
+      country: country,
+      city: city,
     },
     headers: {
       'X-RapidAPI-Key': 'd5c2cec884mshe479a0bb5604893p149fd3jsne33416b10ce7',
@@ -23,4 +23,5 @@ const getCostofLiving = async () => {
   }
 };
 
-module.exports = { getCostofLiving };
+
+
