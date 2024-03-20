@@ -9,17 +9,21 @@ const Card = () => {
 
   const handleClick = async () => {
     try {
-      const data = await getCostofLiving(country,city); 
-      const extractedData = {
-        // country: data.CountryName,
-        // city: data.name,
-        costOfHousing: data.cost_of_living.housing,
-        costOfTransport: data.cost_of_living.transportation,
-        costOfFeeding: data.cost_of_living.food
-      };
-      setCostData(extractedData); // Update state with the result
+      const data = await getCostofLiving(country, city);
+  
+      if (data.cost_of_living) {
+        const extractedData = {
+          costOfHousing: data.cost_of_living.housing || 'Data not available',
+          costOfTransport: data.cost_of_living.transportation || 'Data not available',
+          costOfFeeding: data.cost_of_living.food || 'Data not available'
+        };
+        setCostData(extractedData);
+      } else {
+        setError('Cost of living data not available. Please check if the provided country and city are valid.');
+      }
     } catch (error) {
-      setError(error.message); // Handle any errors
+      setError('Failed to fetch cost of living data. Please try again later or contact support for assistance.');
+      console.error(error);
     }
   };
 
