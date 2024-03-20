@@ -13,6 +13,7 @@
     "@energiency/chartjs-plugin-piechart-outlabels": "^1.3.2",
     "@headlessui/react": "^1.7.18",
     "@heroicons/react": "^2.1.1",
+    "@rollup/rollup-linux-x64-gnu": "^4.9.2",
     "axios": "^1.6.8",
     "bootstrap": "^5.3.3",
     "chart.js": "^4.4.2",
