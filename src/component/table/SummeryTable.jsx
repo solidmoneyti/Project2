@@ -10,22 +10,22 @@ const SummaryTable = () => {
         <thead>
           <tr>
           
-            <th className="border border-slate-600; background-color: rgb(255 237 213);">Totals</th>
-            <th className="border border-slate-600; background-color: rgb(255 237 213);">Amount</th>
+            <th className="border border-slate-600; bg-orange-100">Totals</th>
+            <th className="border border-slate-600; bg-orange-100">Amount</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td className="border border-slate-700; background-color: rgb(255 237 213);">Total Income</td>
-            <td className="border border-slate-700; background-color: rgb(255 237 213);"></td>
+            <td className="border border-slate-700; bg-orange-100">Total Income</td>
+            <td className="border border-slate-700; bg-orange-100"></td>
           </tr>
           <tr>
-            <td className="border border-slate-700; background-color: rgb(255 237 213);">Total Expense</td>
-            <td className="border border-slate-700"></td>
+            <td className="border border-slate-700; bg-orange-100">Total Expense</td>
+            <td className="border border-slate-700; bg-orange-100"></td>
           </tr>
           <tr>
-            <td className="border border-slate-700; background-color: rgb(255 237 213);">Savings</td>
-            <td className="border border-slate-700; background-color: rgb(255 237 213);"></td>
+            <td className="border border-slate-700; bg-orange-100">Savings</td>
+            <td className="border border-slate-700; bg-orange-100"></td>
           </tr>
         </tbody>
       </table>
