@@ -10,7 +10,7 @@ const Card = () => {
   const handleClick = async () => {
     try {
       const data = await getCostofLiving(country, city);
-  
+      console.log(data)
       if (data.cost_of_living) {
         const extractedData = {
           costOfHousing: data.cost_of_living.housing || 'Data not available',

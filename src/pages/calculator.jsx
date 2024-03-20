@@ -7,7 +7,7 @@ import { Expense } from '../utils/Expenses';
 
 const Calculator = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [transactionName, setTransactionName] = useState('');
+    const [transactionName, setTransactionName] = useState('income');
     const [transactionAmount, setTransactionAmount] = useState('');
     const [transactionDate, setTransactionDate] = useState('');
     const [tableData, setTableData] = useState([]);
@@ -47,14 +47,7 @@ const Calculator = () => {
 
 
     const handleAddTransaction = (newTransaction) => {
- LocationForm
         console.log("Adding transaction:", newTransaction);
-        setTableData([...tableData, newTransaction]);
-
-        // Updates charts with new data
-        Expense.push(newTransaction);
-        handleChartChanges();
-
         setTableData([...tableData, newTransaction]);
 
         // Updates charts with new data
@@ -62,7 +55,6 @@ const Calculator = () => {
             Expense.push(newTransaction);
             handleChartChanges();   
         }
- main
 
         // Clear input fields
         setTransactionName('');
