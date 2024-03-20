@@ -18,6 +18,7 @@ const Calculator = () => {
         labels: Expense.map((data) => data.category),
         datasets: [{
         data: Expense.map((data) => data.amount),
+        backgroundColor: 'rgb(244, 151, 142)',
         cutout: '70%',
         borderRadius: 30,
         }]
