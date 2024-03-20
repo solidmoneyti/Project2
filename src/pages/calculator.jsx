@@ -11,9 +11,10 @@ const Calculator = () => {
     const [transactionAmount, setTransactionAmount] = useState('');
     const [transactionDate, setTransactionDate] = useState('');
     const [tableData, setTableData] = useState([]);
-
+    
+    console.log(tableData)
+    
     //For CHART
-
     const [chartData, setChartData] = useState({
         labels: Expense.map((data) => data.category),
         datasets: [{
@@ -35,8 +36,6 @@ const Calculator = () => {
         )
     }
 
-    
-
     const handleOpenModal = () => {
         setIsModalOpen(true);
     };
@@ -51,6 +50,16 @@ const Calculator = () => {
         setTableData([...tableData, newTransaction]);
 
         // Updates charts with new data
+        if(newTransaction.type === 'income') {
+            Expense.push({
+                category: '',
+                amount: '',
+                data: '',
+            });
+            handleChartChanges();   
+        }
+
+
         if(newTransaction.type === 'expense') {
             Expense.push(newTransaction);
             handleChartChanges();   
@@ -64,6 +73,12 @@ const Calculator = () => {
         // Close the modal
         handleCloseModal();
     };
+
+    const handleDelete = (index) => {
+        setTableData(tableData.filter((i) => tableData.indexOf(i) !== index));
+        Expense.splice(index, 1);
+        handleChartChanges();   
+    }
     
 
     return (
@@ -79,7 +94,7 @@ const Calculator = () => {
             <SecondRow handleOpenModal={handleOpenModal} />
             
             {/* DataRow component */}
-            <DataRow tableData={tableData} />
+            <DataRow tableData={tableData} handleDelete={handleDelete}/>
 
     
             {/* Third Row */}
@@ -87,6 +102,7 @@ const Calculator = () => {
     
             {/* Expense Modal */}
             <ExpenseModal
+                    tableData={tableData}
                     isOpen={isModalOpen}
                     onClose={handleCloseModal}
                     onAddTransaction={handleAddTransaction}
