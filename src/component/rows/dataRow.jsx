@@ -12,7 +12,7 @@ const DataRow = ({ tableData, handleDelete }) => {
               <th className='bg-blue-500 border-0'>Name</th>
               <th className='bg-blue-500 border-0'>Amount</th>
               <th className='bg-blue-500 border-0'>Date</th>
-              <th className='bg-blue-500 border-0'>Delete</th>
+              <th className='bg-blue-500 border-0 w-10'>Delete</th>
             </tr>
           </thead>
           <tbody>
