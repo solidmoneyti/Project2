@@ -11,11 +11,15 @@ const Card = () => {
     try {
       const data = await getCostofLiving(country, city);
       console.log(data)
-      if (data.cost_of_living) {
+      if (data) {
+        const costOfHousing = data["Rent Per Month prices"].find(price => price.Cost === "One bedroom apartment in city centre")?.Value || 'Data not available';
+        const costOfFeeding = data["Restaurants prices"].find(price => price.Cost === "Meal for 2 People, Mid-range Restaurant, Three-course")?.Value || 'Data not available';
+        const costOfTransport = data["Transportation prices"].find(price => price.Cost === "Monthly Pass, Regular Price")?.Value || 'Data not available';
+
         const extractedData = {
-          costOfHousing: data.cost_of_living.housing || 'Data not available',
-          costOfTransport: data.cost_of_living.transportation || 'Data not available',
-          costOfFeeding: data.cost_of_living.food || 'Data not available'
+        costOfHousing,
+        costOfFeeding,
+        costOfTransport,
         };
         setCostData(extractedData);
       } else {
@@ -27,10 +31,10 @@ const Card = () => {
     }
   };
 
-console.log (country);
-console.log (city);
+  console.log(country);
+  console.log(city);
   
-return (
+  return (
     <div>
       <div>
         <label>
@@ -49,7 +53,6 @@ return (
         <div>
           {/* Render the extracted data */}
           <h2>Cost of Living</h2>
-          <p>City: {costData.city}</p>
           <p>Cost of Housing: {costData.costOfHousing}</p>
           <p>Cost of Transport: {costData.costOfTransport}</p>
           <p>Cost of Feeding: {costData.costOfFeeding}</p>
