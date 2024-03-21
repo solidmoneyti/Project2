@@ -1,3 +1,3 @@
-export const Expense = [
+export const Expenses = [
 
-  ]
+]

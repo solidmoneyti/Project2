@@ -3,7 +3,9 @@ import ExpenseModal from '../component/table/ExpenseModal';
 import SecondRow from '../component/rows/SecondRow';
 import ThirdRow from '../component/rows/ThirdRow';
 import DataRow from '../component/rows/dataRow';
-import { Expense } from '../utils/Expenses';
+import { Transaction } from '../utils/Transaction';
+import { Expenses } from '../utils/Expenses';
+import { Income} from '../utils/Income';
 
 const Calculator = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -11,14 +13,20 @@ const Calculator = () => {
     const [transactionAmount, setTransactionAmount] = useState('');
     const [transactionDate, setTransactionDate] = useState('');
     const [tableData, setTableData] = useState([]);
+
+    const [totalIncome, setTotalIncome] = useState({
+        total: Income.map((data) => data.amount).reduce((a,b) => a + b, 0)
+      });
     
-    console.log(tableData)
+    const [totalExpense, setTotalExpense] = useState({
+        total: Expenses.map((data) => data.amount).reduce((a,b) => a + b, 0)
+    });
     
     //For CHART
     const [chartData, setChartData] = useState({
-        labels: Expense.map((data) => data.category),
+        labels: Expenses.map((data) => data.category),
         datasets: [{
-        data: Expense.map((data) => data.amount),
+        data: Expenses.map((data) => data.amount),
         backgroundColor: 'rgb(244, 151, 142)',
         cutout: '70%',
         borderRadius: 30,
@@ -27,10 +35,10 @@ const Calculator = () => {
 
     const handleChartChanges = () => {
         setChartData((chartData) => ({
-            labels: Expense.map((data) => data.name),
+            labels: Expenses.map((data) => data.name),
             datasets: [{
             ...chartData.datasets,
-            data: Expense.map((data) => data.amount),
+            data: Expenses.map((data) => data.amount),
             }]
         })
         )
@@ -51,17 +59,24 @@ const Calculator = () => {
 
         // Updates charts with new data
         if(newTransaction.type === 'income') {
-            Expense.push({
-                category: '',
-                amount: '',
-                data: '',
-            });
-            handleChartChanges();   
+            // Transaction.push({
+            //     category: '',
+            //     amount: '',
+            //     data: '',
+            // });
+            Income.push(newTransaction)
+            setTotalIncome(() => ({
+                total: Income.map((data) => data.amount).reduce((a,b) => a + b, 0)
+            }))  
         }
 
 
         if(newTransaction.type === 'expense') {
-            Expense.push(newTransaction);
+            // Transaction.push(newTransaction);
+            Expenses.push(newTransaction)
+            setTotalExpense(() => ({
+                total: Expenses.map((data) => data.amount).reduce((a,b) => a + b, 0)
+            }))
             handleChartChanges();   
         }
 
@@ -74,12 +89,21 @@ const Calculator = () => {
         handleCloseModal();
     };
 
-    const handleDelete = (index) => {
+    const handleDelete = (index, type) => {
         setTableData(tableData.filter((i) => tableData.indexOf(i) !== index));
-        Expense.splice(index, 1);
+        if (type === 'income') {
+            Income.splice(index,1);
+            setTotalIncome(() => ({
+                total: Income.map((data) => data.amount).reduce((a,b) => a + b, 0)
+            }))  
+        } else {
+            Expenses.splice(index,1);
+            setTotalExpense(() => ({
+                total: Expenses.map((data) => data.amount).reduce((a,b) => a + b, 0)
+            }))
+        }
         handleChartChanges();   
     }
-    
 
     return (
         <div className="bg-gray-100 h-max">
@@ -98,7 +122,7 @@ const Calculator = () => {
 
     
             {/* Third Row */}
-            <ThirdRow chartData={chartData}/>
+            <ThirdRow chartData={chartData} totalIncome={totalIncome} totalExpense={totalExpense}/>
     
             {/* Expense Modal */}
             <ExpenseModal
