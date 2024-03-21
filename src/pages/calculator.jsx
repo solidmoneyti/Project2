@@ -3,7 +3,9 @@ import ExpenseModal from '../component/table/ExpenseModal';
 import SecondRow from '../component/rows/SecondRow';
 import ThirdRow from '../component/rows/ThirdRow';
 import DataRow from '../component/rows/dataRow';
-import { Expense } from '../utils/Expenses';
+import { Saving } from '../utils/Saving'
+import { Expenses } from '../utils/Expenses';
+import { Income} from '../utils/Income';
 
 const Calculator = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -12,12 +14,25 @@ const Calculator = () => {
     const [transactionDate, setTransactionDate] = useState('');
     const [tableData, setTableData] = useState([]);
 
-    //For CHART
+    const [totalIncome, setTotalIncome] = useState({
+        total: Income.map((data) => data.amount).reduce((a,b) => a + b, 0)
+      });
+    
+    const [totalExpense, setTotalExpense] = useState({
+        total: Expenses.map((data) => data.amount).reduce((a,b) => a + b, 0)
+    });
 
+    const [totalSaving, setTotalSaving] = useState({
+        Saving: 0,
+    })
+
+    console.log(totalSaving)
+    
+    //For CHART
     const [chartData, setChartData] = useState({
-        labels: Expense.map((data) => data.category),
+        labels: Expenses.map((data) => data.category),
         datasets: [{
-        data: Expense.map((data) => data.amount),
+        data: Expenses.map((data) => data.amount),
         backgroundColor: 'rgb(244, 151, 142)',
         cutout: '70%',
         borderRadius: 30,
@@ -26,16 +41,14 @@ const Calculator = () => {
 
     const handleChartChanges = () => {
         setChartData((chartData) => ({
-            labels: Expense.map((data) => data.name),
+            labels: Expenses.map((data) => data.name),
             datasets: [{
             ...chartData.datasets,
-            data: Expense.map((data) => data.amount),
+            data: Expenses.map((data) => data.amount),
             }]
         })
         )
     }
-
-    
 
     const handleOpenModal = () => {
         setIsModalOpen(true);
@@ -51,8 +64,31 @@ const Calculator = () => {
         setTableData([...tableData, newTransaction]);
 
         // Updates charts with new data
+        if(newTransaction.type === 'income') {
+            // Transaction.push({
+            //     category: '',
+            //     amount: '',
+            //     data: '',
+            // });
+            Income.push(newTransaction)
+            setTotalSaving((prev) => ({
+                Saving: prev.Saving + newTransaction.amount
+            }))
+            setTotalIncome(() => ({
+                total: Income.map((data) => data.amount).reduce((a,b) => a + b, 0)
+            }))  
+        }
+
+
         if(newTransaction.type === 'expense') {
-            Expense.push(newTransaction);
+            // Transaction.push(newTransaction);
+            Expenses.push(newTransaction)
+            setTotalSaving((prev) => ({
+                Saving: prev.Saving - newTransaction.amount
+            }))
+            setTotalExpense(() => ({
+                total: Expenses.map((data) => data.amount).reduce((a,b) => a + b, 0)
+            }))
             handleChartChanges();   
         }
 
@@ -64,7 +100,22 @@ const Calculator = () => {
         // Close the modal
         handleCloseModal();
     };
-    
+
+    const handleDelete = (index, type) => {
+        setTableData(tableData.filter((i) => tableData.indexOf(i) !== index));
+        if (type === 'income') {
+            Income.splice(index,1);
+            setTotalIncome(() => ({
+                total: Income.map((data) => data.amount).reduce((a,b) => a + b, 0)
+            }))
+        } else {
+            Expenses.splice(index,1);
+            setTotalExpense(() => ({
+                total: Expenses.map((data) => data.amount).reduce((a,b) => a + b, 0)
+            }))
+        }
+        handleChartChanges();   
+    }
 
     return (
         <div className="bg-gray-100 h-max">
@@ -79,14 +130,15 @@ const Calculator = () => {
             <SecondRow handleOpenModal={handleOpenModal} />
             
             {/* DataRow component */}
-            <DataRow tableData={tableData} />
+            <DataRow tableData={tableData} handleDelete={handleDelete}/>
 
     
             {/* Third Row */}
-            <ThirdRow chartData={chartData}/>
+            <ThirdRow chartData={chartData} totalIncome={totalIncome} totalExpense={totalExpense} totalSaving={totalSaving}/>
     
             {/* Expense Modal */}
             <ExpenseModal
+                    tableData={tableData}
                     isOpen={isModalOpen}
                     onClose={handleCloseModal}
                     onAddTransaction={handleAddTransaction}

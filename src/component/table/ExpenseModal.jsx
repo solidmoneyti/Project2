@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const ExpenseModal = ({ isOpen, onClose, onAddTransaction }) => {
+const ExpenseModal = ({ tableData ,isOpen, onClose, onAddTransaction }) => {
   const [transactionType, setTransactionType] = useState('income');
   const [transactionName, setTransactionName] = useState('');
   const [transactionAmount, setTransactionAmount] = useState('');

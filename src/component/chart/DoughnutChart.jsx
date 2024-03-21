@@ -12,7 +12,7 @@ Chart.register(Colors);
 Chart.register(ChartDataLabels)
 
 
-const DoughnutChart = ({ chartData }) => {
+const DoughnutChart = ({ chartData, totalSaving }) => {
 
   const options = {
     responsive: true,
@@ -26,9 +26,14 @@ const DoughnutChart = ({ chartData }) => {
     plugins: {
         datalabels: {
             formatter: (value, ctx) => {
-              const total = ctx.chart.getDatasetMeta(0).total;
-              let percentage = (value * 100 / total).toFixed(2) + "%";
-              return ctx.chart.data.labels[ctx.dataIndex] + '\n' + percentage;
+              if (value != 0) {
+                const total = ctx.chart.getDatasetMeta(0).total;
+                let percentage = (value * 100 / total).toFixed(2) + "%";
+                return ctx.chart.data.labels[ctx.dataIndex] + '\n' + percentage;
+              } else {
+                value = '';
+                return value
+              }
             },
             font: {
               weight: 'bold',
