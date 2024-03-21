@@ -9,7 +9,7 @@ export async function getCostofLiving (country, city) {
       city: city,
     },
     headers: {
-      'X-RapidAPI-Key': 'd5c2cec884mshe479a0bb5604893p149fd3jsne33416b10ce7',
+      'X-RapidAPI-Key': '5c8071e7c6msh626656d69751305p1921f6jsnb3bb33558b0f',
       'X-RapidAPI-Host': 'cities-cost-of-living-and-average-prices-api.p.rapidapi.com'
     }
   };
