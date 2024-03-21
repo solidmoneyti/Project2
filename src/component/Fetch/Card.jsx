@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { getCostofLiving } from '../api/api'; // Importing the getCostofLiving function
+import { getCostofLiving } from '../api/api';
 
 const Card = () => {
   const [country, setCountry] = useState('');
