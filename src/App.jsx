@@ -5,6 +5,7 @@ import Calculator from './pages/calculator';
 import './App.css';
 import Footer from './component/Footer/Footer';
 
+
 const App = () => {
   return (
     <Router>
