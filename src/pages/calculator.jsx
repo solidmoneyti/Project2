@@ -3,7 +3,7 @@ import ExpenseModal from '../component/table/ExpenseModal';
 import SecondRow from '../component/rows/SecondRow';
 import ThirdRow from '../component/rows/ThirdRow';
 import DataRow from '../component/rows/dataRow';
-import { Transaction } from '../utils/Transaction';
+import { Saving } from '../utils/Saving'
 import { Expenses } from '../utils/Expenses';
 import { Income} from '../utils/Income';
 
@@ -21,6 +21,12 @@ const Calculator = () => {
     const [totalExpense, setTotalExpense] = useState({
         total: Expenses.map((data) => data.amount).reduce((a,b) => a + b, 0)
     });
+
+    const [totalSaving, setTotalSaving] = useState({
+        Saving: 0,
+    })
+
+    console.log(totalSaving)
     
     //For CHART
     const [chartData, setChartData] = useState({
@@ -65,6 +71,9 @@ const Calculator = () => {
             //     data: '',
             // });
             Income.push(newTransaction)
+            setTotalSaving((prev) => ({
+                Saving: prev.Saving + newTransaction.amount
+            }))
             setTotalIncome(() => ({
                 total: Income.map((data) => data.amount).reduce((a,b) => a + b, 0)
             }))  
@@ -74,6 +83,9 @@ const Calculator = () => {
         if(newTransaction.type === 'expense') {
             // Transaction.push(newTransaction);
             Expenses.push(newTransaction)
+            setTotalSaving((prev) => ({
+                Saving: prev.Saving - newTransaction.amount
+            }))
             setTotalExpense(() => ({
                 total: Expenses.map((data) => data.amount).reduce((a,b) => a + b, 0)
             }))
@@ -95,7 +107,7 @@ const Calculator = () => {
             Income.splice(index,1);
             setTotalIncome(() => ({
                 total: Income.map((data) => data.amount).reduce((a,b) => a + b, 0)
-            }))  
+            }))
         } else {
             Expenses.splice(index,1);
             setTotalExpense(() => ({
@@ -122,7 +134,7 @@ const Calculator = () => {
 
     
             {/* Third Row */}
-            <ThirdRow chartData={chartData} totalIncome={totalIncome} totalExpense={totalExpense}/>
+            <ThirdRow chartData={chartData} totalIncome={totalIncome} totalExpense={totalExpense} totalSaving={totalSaving}/>
     
             {/* Expense Modal */}
             <ExpenseModal

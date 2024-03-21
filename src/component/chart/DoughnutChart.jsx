@@ -12,7 +12,7 @@ Chart.register(Colors);
 Chart.register(ChartDataLabels)
 
 
-const DoughnutChart = ({ chartData }) => {
+const DoughnutChart = ({ chartData, totalSaving }) => {
 
   const options = {
     responsive: true,

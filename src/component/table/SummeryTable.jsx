@@ -1,7 +1,7 @@
 // SummaryTable.jsx
 import React, { useState } from 'react';
 
-const SummaryTable = ( {totalIncome, totalExpense} ) => {
+const SummaryTable = ( {totalIncome, totalExpense, totalSaving} ) => {
 
   return (
     <div>
@@ -24,7 +24,7 @@ const SummaryTable = ( {totalIncome, totalExpense} ) => {
           </tr>
           <tr>
             <td className="border border-slate-700; bg-orange-100 text-black">Savings</td>
-            <td className="border border-slate-700; bg-orange-100 text-black"></td>
+            <td className="border border-slate-700; bg-orange-100 text-black">{totalSaving.Saving}</td>
           </tr>
         </tbody>
       </table>
