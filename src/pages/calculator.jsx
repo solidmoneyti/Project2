@@ -123,7 +123,7 @@ const Calculator = () => {
             {/* First Row with 0 columns */}
             <div className="flex justify-center items-center max-h-60 pl-9">
             {/* Heading / Page title - Expense Tracker */}
-            <img src="src/assets/images/logo.png" alt="Expense Tracker Logo" className="max-h-svh"/>
+            <img src="./public/logo.png" alt="Expense Tracker Logo" className="max-h-svh"/>
             </div>
     
             {/* Second Row */}
